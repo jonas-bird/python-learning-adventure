@@ -20,10 +20,14 @@ def slow_print(message_to_print):
 
 def get_input():
     option = ""
-    while option not in (1, 2):
-        option = int(input("What would you like to do?\n"
-                           "(Please enter 1 or 2):"))
-    return option
+    while True:
+        option = input("What would you like to do?\n"
+                       "(Please enter 1 or 2):")
+        if option in ('1', '2'):
+            break
+
+        slow_print("Sorry... I don't understand.")
+    return int(option)
 
 
 def again():
