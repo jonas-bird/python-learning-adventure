@@ -15,18 +15,19 @@ import random
 def slow_print(message_to_print):
     # Print a string and then pause
     print(message_to_print)
-    time.sleep(1)
+    time.sleep(2)
 
 
 def get_input():
     option = ""
-    while (option != 1) or (option != 2):
-        option = int(input("What would you like to do?\n(Please enter 1 or 2): "))
+    while option not in (1, 2):
+        option = int(input("What would you like to do?\n"
+                           "(Please enter 1 or 2):"))
     return option
 
 
 def again():
-    play_again == 'maybe'
+    play_again = 'maybe'
     slow_print("THE")
     slow_print("END")
     while True:
@@ -40,7 +41,11 @@ def again():
 
 def intro():
     # Introduce the 'player' to the game
-    choices = []
+    choices = ['']
+    """ there are simpler ways of keeping track of the option the player chose in
+       a game this short, but as I plan to extend it as a portfolio project I
+       felt using a list was a better design choice. Eventually I will probably
+       include a player class to keep track of progress through the game"""
     slow_print("Studying a new topic is an adventure.")
     slow_print("Whether you are studying for a university course,")
     slow_print("preparing for a certification,")
@@ -58,55 +63,63 @@ def branch_one(choices):
     slow_print("Enter 2 to study when you have time")
 
     if get_input() == 1:
-        choices[0] = 'plan'
-    else:
-        choices[0] = ''
+        choices.insert(0, 'study')
+
     two(choices)
 
 
 def two(choices):
     # second player choice
-    distractions = ['family', 'work', 'friends', 'stuff']
+    distractions = ['family', 'work', 'friends', 'stuff', 'social media']
     distraction = random.choice(distractions)
     slow_print("Oh no!")
-    slow_print(f"It has been hard to find time to study because of {distraction}")
-    if choices[0] == 'plan':
+    slow_print(f"It has been hard to find time to study because of"
+               f" {distraction}")
+    if choices[0] == 'study':
         slow_print("Luckily with a schedule made up you were prepared to "
                    "manage your time and you are ready to study")
         branch_three(choices)
     elif choices[0] == 'noplan':
         slow_print("Despite your best intentions you didn't manage your time"
-                   "well and it is the last minute...")
+                   " well and it is the last minute...")
         bad_ending(distraction)
-   else:
-       slow_print(f"Well despite your best intention {distraction} has eaten up"
-                   "half your time")
-       choices[0] = 'noplan'
-       branch_one(choices)
+    else:
+        slow_print(f"Well despite your best intention {distraction} has eaten "
+                   "up half your time")
+        choices[0] = 'noplan'
+        branch_one(choices)
 
 
 def bad_ending(reason):
-    slow_print(f"Unfortunatly because of poor planning you did not have enough time to deal with {reason}")
+    slow_print(f"Unfortunatly because of poor planning you did not have enough"
+               f"time to deal with {reason}")
     slow_print("and study...")
     slow_print("Hopefully next time will go better!")
-    again()
 
 
 def good_ending():
-    slow_print("")
+    slow_print("With good planning you have completed your course and your"
+               "learning adventure!")
 
 
 def branch_three(choices):
+    slow_print("Reviewing course material is an important part of learning")
+    slow_print("Besides making it easier to review, taking notes can help a"
+               "student remember difficult material.,,")
+    slow_print("That is worth a shot... (Enter 1):")
+    slow_print("I have always had a good memory, and that would take too "
+               "much time (Enter 2):")
     if get_input() == 1:
         good_ending()
-    else
-        bad_ending("Poor organization")
+    else:
+        bad_ending("poor organization")
+
 
 
 def main():
     intro()
     slow_print("Well that was fun wasn't it?")
-
+    again()
 
 if __name__ == "__main__":
     main()
