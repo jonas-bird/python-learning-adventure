@@ -39,13 +39,10 @@ def again():
         else:
             slow_print("Sorry... I don't understand.")
 
+
 def intro():
     # Introduce the 'player' to the game
     choices = ['']
-    """ there are simpler ways of keeping track of the option the player chose in
-       a game this short, but as I plan to extend it as a portfolio project I
-       felt using a list was a better design choice. Eventually I will probably
-       include a player class to keep track of progress through the game"""
     slow_print("Studying a new topic is an adventure.")
     slow_print("Whether you are studying for a university course,")
     slow_print("preparing for a certification,")
@@ -115,11 +112,11 @@ def branch_three(choices):
         bad_ending("poor organization")
 
 
-
 def main():
     intro()
     slow_print("Well that was fun wasn't it?")
     again()
+
 
 if __name__ == "__main__":
     main()
