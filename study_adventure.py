@@ -21,7 +21,7 @@ def slow_print(message_to_print):
 def get_input():
     option = ""
     while (option != 1) or (option != 2):
-        option = int(input("What would you like to do?\n(Please enter 1 or 2)."))
+        option = int(input("What would you like to do?\n(Please enter 1 or 2): "))
     return option
 
 
@@ -86,11 +86,21 @@ def two(choices):
 
 
 def bad_ending(reason):
-    pass
+    slow_print(f"Unfortunatly because of poor planning you did not have enough time to deal with {reason}")
+    slow_print("and study...")
+    slow_print("Hopefully next time will go better!")
+    again()
+
+
+def good_ending():
+    slow_print("")
 
 
 def branch_three(choices):
-    pass
+    if get_input() == 1:
+        good_ending()
+    else
+        bad_ending("Poor organization")
 
 
 def main():

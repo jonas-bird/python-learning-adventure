@@ -5,6 +5,8 @@
 
 This is a simple adventure game in Python created for the Accenture Scholarship Udacity Intro to Programming Nano-degree. It is the project for the Intro to Python 1 section. 
 
+Rather than simply create another (short) zork like text adventure I decided to take a more educational approach. 
+
 ### technology used 
 
 ### install instructions 
